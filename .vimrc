@@ -77,3 +77,25 @@ set secure
 
 " To autoformat on save
 " au BufWrite * :Autoformat
+
+" Settings for the left directory/files pane
+" Using netrw
+" For the tree-type style. Hit i inside netrw to see others
+let g:netrw_liststyle = 3
+" Get rid of the banner on top. Hit I inside netrw to toggle
+let g:netrw_banner = 0
+" Set size to 25
+let g:netrw_winsize = 15
+" When a file is clicked, open in new tab
+" 1 - open files in a new horizontal split
+" 2 - open files in a new vertical split
+" 3 - open files in a new tab
+" 4 - open in previous window
+let g:netrw_browse_split = 4
+" Open netrw automatically when entering vim
+augroup Drawer
+	autocmd!
+	autocmd VimEnter * :Vexplore
+augroup END
+
+
