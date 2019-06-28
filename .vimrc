@@ -93,9 +93,17 @@ let g:netrw_winsize = 15
 " 4 - open in previous window
 let g:netrw_browse_split = 4
 " Open netrw automatically when entering vim
-augroup Drawer
-	autocmd!
-	autocmd VimEnter * :Vexplore
+" augroup Drawer
+" 	autocmd!
+" 	autocmd VimEnter * :Vexplore
+" augroup END
+
+" map spacebar to open up Vexplore
+nnoremap <space> :Vexplore<CR>
+
+" close if final buffer is netrw or the quickfix
+augroup finalcountdown
+ au!
+ autocmd WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&filetype") == "netrw" || &buftype == 'quickfix' |q|endif
+ nmap - :Lexplore<cr>
 augroup END
-
-
