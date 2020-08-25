@@ -16,7 +16,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'Chiel92/vim-autoformat'
 
 " Theme
-" Plugin 'reedes/vim-colors-pencil'
+Plugin 'reedes/vim-colors-pencil'
 
 " Status bar
 Plugin 'vim-airline/vim-airline'
@@ -49,9 +49,8 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 syntax on
-" color dracula
+color simple-dark
 " colorscheme pencil
-" set background=light
 
 set number
 
@@ -66,8 +65,7 @@ set backspace=indent,eol,start
 " colors column 100 with specified colour
 " set colorcolumn=100
 " highlight ColorColumn ctermbg=lightgrey
-highlight Normal ctermfg=black ctermbg=white
-
+" highlight Normal ctermfg=black ctermbg=lightgreen
 
 " This option forces Vim to source .vimrc file if it present in working directory
 " set exrc
