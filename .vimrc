@@ -53,6 +53,9 @@ color simple-dark
 " colorscheme pencil
 
 set number
+set cursorline
+set colorcolumn=99
+set smartcase
 
 set autoindent
 " Indentation
@@ -89,7 +92,7 @@ let g:netrw_winsize = 15
 " 2 - open files in a new vertical split
 " 3 - open files in a new tab
 " 4 - open in previous window
-let g:netrw_browse_split = 4
+let g:netrw_browse_split = 2
 " Open netrw automatically when entering vim
 " augroup Drawer
 " 	autocmd!
