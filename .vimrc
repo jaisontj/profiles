@@ -12,6 +12,9 @@ Plugin 'VundleVim/Vundle.vim'
 " Plugin for autocomplete
 " Plugin 'Valloric/YouCompleteMe'
 
+" PEP 8 checking for python
+Plugin 'nvie/vim-flake8'
+
 " AutoIndent
 Plugin 'Chiel92/vim-autoformat'
 
@@ -52,23 +55,46 @@ syntax on
 color simple-dark
 " colorscheme pencil
 
+" colors column 100 with specified colour
+" set colorcolumn=100
+" highlight ColorColumn ctermbg=lightgrey
+" highlight Normal ctermfg=black ctermbg=lightgreen
 set number
 set cursorline
 set colorcolumn=99
 set smartcase
 
-set autoindent
 " Indentation
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set noexpandtab
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+set expandtab
 set backspace=indent,eol,start
 
-" colors column 100 with specified colour
-" set colorcolumn=100
-" highlight ColorColumn ctermbg=lightgrey
-" highlight Normal ctermfg=black ctermbg=lightgreen
+" Python
+au BufNewFile,BufRead *.py
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set textwidth=99 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix |
+    \ set ft=python
+autocmd BufWritePost *.py 
+    \ call flake8#Flake8()
+
+let python_highlight_all=1
+" vim-flake8
+let g:flake8_show_in_gutter=1
+let g:flake8_show_in_file=1
+
+" add binding to call the function
+nnoremap <buffer> <F3> :call flake8#Flake8ShowError()<cr>
+
+" Flag whitespaces
+highlight BadWhitespace ctermbg=red guibg=darkred
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
 " This option forces Vim to source .vimrc file if it present in working directory
 " set exrc
